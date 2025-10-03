@@ -52,7 +52,6 @@ def listar_livros():
     finally:
         if conexao:
             conexao.close
-listar_livros()
 
 def update_disp():
     try:
