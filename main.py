@@ -77,10 +77,6 @@ def update_disp(id_livro, new_disp):
         if conexao:
             conexao.close()
 
-update_disp()
-print("=" * 50)
-listar_livros()
-
 def del_livro(id):
     try:
         conexao = sqlite3.connect("biblioteca.db")
