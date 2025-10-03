@@ -37,11 +37,6 @@ def cadastrar_livro(titulo, autor, ano):
         if conexao:
             conexao.close()
 
-titulo = input("Digite o Título do Livro: ").lower().strip()
-autor = input("Digite o Nome do Autor: ").lower().strip()
-ano = int(input(f"Digite o Ano de Publicação de {titulo}: "))
-cadastrar_livro(titulo, autor, ano)
-
 def listar_livros():
     try:
         conexao = sqlite3.connect("biblioteca.db")
@@ -114,3 +109,23 @@ deletar = int(input("Digite o ID do Livro que deseja deletar: "))
 del_livro(deletar)
 print("=" * 50)
 listar_livros()
+
+def menu():
+    while True:
+        print("\n Biblioteca Senai")
+        print(" 1 - Cadastrar Livros")
+        print(" 2 - Listar Livros")
+        print(" 3 - Alterar Disponibilidade")
+        print(" 4 - Remover Livros")
+        print(" 5 - Sair")
+        opcao = input("Escolha uma opção: ").strip()
+        match opcao:
+            case "1": cadastrar_livro()
+            case "2": listar_livros()
+            case "3": update_disp()
+            case "4": del_livro()
+            case "5":
+                print("Acesso encerrado")
+                break
+
+menu()
