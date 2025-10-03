@@ -108,10 +108,23 @@ def menu():
         print(" 5 - Sair")
         opcao = input("Escolha uma opção: ").strip()
         match opcao:
-            case "1": cadastrar_livro()
-            case "2": listar_livros()
-            case "3": update_disp()
-            case "4": del_livro()
+            case "1":
+                titulo = input("Digite o título do Livro: ").lower().strip()
+                autor = input("Digite o nome do autor: ").lower().strip()
+                ano = int(input(f"Digite o ano de publicação de {titulo}: "))
+                cadastrar_livro(titulo, autor, ano)
+
+            case "2": 
+                listar_livros()
+
+            case "3": 
+                id_livro = int(input("Digite o ID do livro: "))
+                new_disp = input("Digite a nova disponibilidade ('S', 'N'): ")
+                update_disp(id_livro, new_disp)
+
+            case "4":
+                deletar = int(input("Digite o ID do livro que deseja deletar: "))
+                del_livro(deletar)
             case "5":
                 print("Acesso encerrado")
                 break
