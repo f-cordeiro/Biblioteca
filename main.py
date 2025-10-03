@@ -21,7 +21,7 @@ def cadastrar_livro(titulo, autor, ano):
 
         cursor.execute("""
         INSERT INTO livros (titulo, autor, ano, disponibilidade)
-        VALUES (?,?,?,)""", (titulo, autor, ano, "S"))
+        VALUES (?,?,?,?)""", (titulo, autor, ano, "S"))
 
         conexao.commit()
 
@@ -39,5 +39,5 @@ def cadastrar_livro(titulo, autor, ano):
 
 titulo = input("Digite o Título do Livro: ").lower().strip()
 autor = input("Digite o Nome do Autor: ").lower().strip()
-ano = int(input(f"Digite o Ano de Publicação de {titulo}"))
+ano = int(input(f"Digite o Ano de Publicação de {titulo}: "))
 cadastrar_livro(titulo, autor, ano)
