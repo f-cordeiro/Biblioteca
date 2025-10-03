@@ -97,10 +97,6 @@ def del_livro(id):
     finally:
         if conexao:
             conexao.close()
-deletar = int(input("Digite o ID do Livro que deseja deletar: "))
-del_livro(deletar)
-print("=" * 50)
-listar_livros()
 
 def menu():
     while True:
