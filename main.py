@@ -13,3 +13,31 @@ CREATE TABLE IF NOT EXISTS livros (
     disponibilidade CHAR(1) CHECK(disponibilidade IN('S','N'))
     )              
 """)
+
+def cadastrar_livro(titulo, autor, ano):
+    try:
+        conexao = sqlite3.connect("biblioteca.db")
+        cursor = conexao.cursor()
+
+        cursor.execute("""
+        INSERT INTO livros (titulo, autor, ano, disponibilidade)
+        VALUES (?,?,?,)""", (titulo, autor, ano, "S"))
+
+        conexao.commit()
+
+        if cursor.rowcount > 0:
+            print(f"Livro {titulo} Adicionado com Sucesso!")
+        else:
+            print(f"Erro ao cadastrar o Livro {titulo}")
+
+    except sqlite3.Error as error:
+        print("Erro ao cadastrar o Livro {error}")
+
+    finally:
+        if conexao:
+            conexao.close()
+
+titulo = input("Digite o Título do Livro: ").lower().strip()
+autor = input("Digite o Nome do Autor: ").lower().strip()
+ano = int(input(f"Digite o Ano de Publicação de {titulo}"))
+cadastrar_livro(titulo, autor, ano)
